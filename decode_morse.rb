@@ -1,4 +1,4 @@
-#
+#Morse Code Dictionary Storage
 @morse_code_dictionary = {
   '.-' => 'A',
   '-...' => 'B',
@@ -28,10 +28,12 @@
   '--..' => 'Z'
 }
 
+# Decode a specific letter
 def decode_char (let)
   @morse_code_dictionary[let]
 end
 
+# Decode a word
 def decode_word (word)
   letters = word.split.map {
     |let| decode_char(let)
@@ -39,6 +41,7 @@ def decode_word (word)
   letters.join
 end
 
+# Decode a full sentence
 def decode_sentence(sentence)
   words = sentence.split(' ').map {
     |word| decode_word(word)
@@ -46,6 +49,7 @@ def decode_sentence(sentence)
   decoded_sentence = words.join(' ')
 end
 
+# Challange to decode the word
 complete_sentence = decode_sentence('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...').downcase
 
 puts complete_sentence
